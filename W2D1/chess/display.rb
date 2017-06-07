@@ -8,21 +8,31 @@ class Display
     @board = board
   end
 
-  def render
+  def render(board)
     until @cursor.start_pos && @cursor.end_pos
-      board_temp = Board.new(@board.dupe)
+      system('clear')
+      board_temp = Board.new(board.dupe)
       @cursor.value = board_temp[@cursor.cursor_pos]
       board_temp[@cursor.cursor_pos] = @cursor
       puts ''
-      board_temp.grid.each do |row|
-        rowz = row.map { |i| i.to_s }.join(" ")
-        puts rowz
+      board_temp.grid.each_index do |i|
+        rowz = []
+        board_temp.grid[i].each_index do |j|
+          background = (i.even? == j.even?) ? :white : :black
+          opts = {}
+          opts[:color] = board_temp.grid[i][j].color
+          opts[:background] = background
+          # opts.merge(board_temp[i][j].opts) if board_temp[i][j].class == Cursor
+          rowz << board_temp.grid[i][j].to_s.colorize(opts)
+        end
+        puts "#{rowz.join}"
       end
-      input = @cursor.get_input
+      @cursor.get_input
     end
-    @board.move_piece(@cursor.start_pos, @cursor.end_pos)
+    move = [@cursor.start_pos, @cursor.end_pos]
     @cursor.start_pos = nil
     @cursor.end_pos = nil
+    move
   end
 
 

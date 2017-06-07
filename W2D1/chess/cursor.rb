@@ -33,7 +33,7 @@ MOVES = {
 
 class Cursor
 
-  attr_reader :cursor_pos, :board
+  attr_reader :cursor_pos, :board, :color, :opts
   attr_accessor :value, :start_pos, :end_pos
 
   def initialize(cursor_pos, board)
@@ -42,6 +42,8 @@ class Cursor
     @value = nil
     @start_pos = nil
     @end_pos = nil
+    @opts = {}
+    @opts[:background] = :red
   end
 
   def get_input
@@ -54,7 +56,8 @@ class Cursor
   end
 
   def to_s
-    @value.to_s.colorize(:red)
+    @color = :red
+    @value.to_s.colorize(:background => :red)
   end
   private
 
@@ -91,9 +94,9 @@ class Cursor
     case key
     when :return || :space
       if @start_pos
-        @end_pos = @cursor_pos
+        @end_pos = @cursor_pos.dup
       else
-        @start_pos = @cursor_pos
+        @start_pos = @cursor_pos.dup
       end
 
     when MOVES.keys.select { |k| k == key }[0]
