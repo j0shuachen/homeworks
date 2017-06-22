@@ -1,0 +1,39 @@
+<h1> The Coolest Cat: <%= @cat.name %> </h1>
+
+
+<h2>Cat Characteristics</h2>
+
+
+
+
+  <body>
+  <h3>Description</h3>
+  <%= @cat.description %>
+  <br>
+---------------------------------------------------------
+
+</body>
+
+<br>
+<%= button_to "Edit this cat", edit_cat_url(@cat), method: :get%>
+<br>
+<%= button_to "Delete this cat", cat_url(@cat), method: :delete%>
+---------------------------------------------------------
+<br>
+<section>
+<table>
+  <tr>
+    <th> Name </th>
+    <th> Sex </th>
+    <th> Color </th>
+    <th> Age </th>
+    <th> Birth Date </th>
+  </tr>
+  <tr>
+    <td> <%= @cat.name %> </td>
+    <td> <%= @cat.sex %> </td>
+    <td> <%= @cat.color %> </td>
+    <td> <%= @cat.age %> </td>
+    <td> <%= @cat.birth_date %> </td>
+  </tr>
+  <section>

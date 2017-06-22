@@ -1,0 +1,46 @@
+
+<h1> Register a new cat! </h1>
+
+
+
+<form action=<%=cats_url%> method="post">
+  <input type="hidden" name="_method" value="POST">
+
+    Name
+    <input type="text" name="cat[name]">
+
+  <br>
+
+    Birthdate
+    <input type="date" name="cat[birth_date]">
+
+  <br>
+    Sex
+    <div>
+    <input type="radio" name="cat[sex]" value = "M" checked>
+    <label for ="M">Male</label>
+    <input type="radio" name="cat[sex]" value="F">
+   <label for="F">Female</label>
+ </div>
+
+ <br>
+ Age
+  <input type="text" name="cat[age]">
+
+  <br>
+  Color
+  <select name="cat[color]">
+    <option disabled selected>--Select a Color--</option>
+  <%Cat::COLORS.each do |color|%>
+    <option value = "<%=color%>"> <%=color%> </option>
+    <%end%>
+  </select>
+
+  <br>
+  <p>Enter a short (or long!) description</p>
+  <textarea name = "cat[description]" rows="8" cols="20"> </textarea>
+
+  <br>
+  <input type = "submit"></input>
+
+</form>

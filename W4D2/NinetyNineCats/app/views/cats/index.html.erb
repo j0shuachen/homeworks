@@ -1,0 +1,8 @@
+<h1> All the coolest cats in the world! </h1>
+
+<% @cats.each do |cat| %>
+  <%= cat.name %>
+  <br>
+<% end %>
+
+<%= button_to "Add cat", new_cat_url, method: :get %>
