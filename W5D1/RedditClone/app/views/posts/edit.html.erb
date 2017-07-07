@@ -1,0 +1,30 @@
+<h1>Posts#edit</h1>
+
+<%= flash[:errors].join("<br>").html_safe if flash[:errors]%>
+
+<form class="" action="<%=posts_url%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+  <label for="">Title
+    <input type="text" name="post[title]" value="<%@post.title%>">
+  </label>
+
+  <label for="">URL
+    <input type="text" name="post[url]" value="<%@post.url%>">
+  </label>
+
+  <label for="">Content
+    <input type="text" name="post[content]" value="<%@post.content%>">
+  </label>
+
+  <% Sub.all.each do |sub| %>
+    <br>
+    <input type="checkbox" name="post[sub_ids][]" value="<%=sub.id%>" checked="<%="checked" if post.sub_ids.include?(sub.id)%>">
+    <%= sub.title %>
+  <% end %>
+    <br>
+
+  <input type="submit" name="" value="Edit Post">
+
+</form>

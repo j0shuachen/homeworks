@@ -1,0 +1,23 @@
+<h1>Edit sub here!</h1>
+
+<%= flash[:errors].join("<br>").html_safe if flash[:errors]%>
+
+<form class="" action="<%=sub_url(@sub)%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+  <label for="">Title
+    <input type="text" name="sub[title]" value="<%= @sub.title %>">
+  </label>
+
+  <label for="">URL
+    <input type="text" name="sub[url]" value="<%= @sub.url %>">
+  </label>
+
+  <label for="">Description
+    <input type="text" name="sub[description]" value="<%= @sub.description %>">
+  </label>
+
+  <input type="submit" name="" value="Edit Sub!">
+
+</form>

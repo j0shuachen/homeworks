@@ -1,0 +1,18 @@
+<h1><%= @sub.title %></h1>
+
+<% if @sub.moderator == current_user %>
+<%= link_to "Edit this Sub", edit_sub_url(@sub) %>
+<% end %>
+
+<br>
+<%= link_to "Create New Sub", new_sub_url  %>
+<br>
+<%= link_to "Create New Post", new_post_url  %>
+
+
+
+
+
+<br>
+<br>
+<h3>hosted by:<%= @sub.moderator.username %></h3>

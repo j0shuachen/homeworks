@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedditClone</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+
+<% if signed_in? %>
+  Welcome <%= current_user.username %>
+  <% else %>
+    <%= link_to "Sign In", new_session_url %>
+    <%= link_to "Sign Up", new_user_url %>
+    <% end %>
+
+    <%= button_to "Sign Out", session_url, method: :delete  %>
+<!-- button_to vs link_to -->
+<br>
+<%= button_to "Back to All Subs", subs_url, method: :get %>
+    <%= yield %>
+  </body>
+</html>

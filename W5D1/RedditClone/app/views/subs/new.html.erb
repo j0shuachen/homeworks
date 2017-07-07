@@ -1,0 +1,22 @@
+<h1>Make a new sub!</h1>
+
+<%= flash[:errors].join("<br>").html_safe if flash[:errors]%>
+
+<form class="" action="<%=subs_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+  <label for="">Title
+    <input type="text" name="sub[title]" value="">
+  </label>
+
+  <label for="">URL
+    <input type="text" name="sub[url]" value="">
+  </label>
+
+  <label for="">Description
+    <input type="text" name="sub[description]" value="">
+  </label>
+
+  <input type="submit" name="" value="Submit">
+
+</form>
